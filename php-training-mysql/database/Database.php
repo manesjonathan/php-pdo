@@ -1,7 +1,10 @@
 <?php
 
-include_once('DbInterface.php');
+namespace App\database;
+require_once __DIR__.'/DbInterface.php';
 
+use PDO;
+use PDOException;
 class Database implements DbInterface
 {
     private static $instance = null;
@@ -25,30 +28,18 @@ class Database implements DbInterface
         }
     }
 
-    public function get_connection()
+    public function getConnection()
     {
         return $this->connection;
     }
 
 
-    public static function get_instance()
+    public static function getInstance()
     {
         if (!self::$instance) {
             self::$instance = new Database();
         }
 
         return self::$instance;
-    }
-
-
-    public function get_query_result($query)
-    {
-        try {
-            $query = $this->connection->prepare($query);
-            $query->execute();
-            return $query->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $error) {
-            echo "Query error:"  . $error->getMessage();
-        }
     }
 }

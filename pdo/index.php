@@ -1,5 +1,7 @@
 <?php
 
+use database\Database;
+
 require __DIR__ . '/database/Database.php';
 $dbInstance = Database::get_instance();
 $connection = $dbInstance->get_connection();
@@ -74,9 +76,9 @@ if (isset($_POST['ville']) && isset($_POST['haut']) && isset($_POST['bas'])) {
             <label for="ville">Ville:</label>
             <input type="text" name="ville" id="ville">
             <label for="haut">Haut:</label>
-            <input type="haut" name="haut" id="haut">
+            <input type="text" name="haut" id="haut">
             <label for="bas">Bas:</label>
-            <input type="bas" name="bas" id="bas">
+            <input type="text" name="bas" id="bas">
             <input type="submit" value="Envoyer">
         </form>
     </main>
