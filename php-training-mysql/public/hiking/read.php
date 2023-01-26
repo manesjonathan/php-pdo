@@ -27,51 +27,52 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
     <link rel="stylesheet" href="../css/output.css">
 </head>
 
-<body class="bg-indigo-500 text-white p-10">
+<body class="flex flex-col bg-slate-900 items-center text-gray-50 h-screen">
 
 <header>
     <form action="../user/logout.php" method="post">
         <input type="submit" value="Logout">
     </form>
 </header>
-<h1>Liste des randonnées</h1>
-<a class="btn-" href="create.php">Create a hiking</a>
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Difficulty</th>
-        <th>Distance</th>
-        <th>Duration</th>
-        <th>Height difference</th>
-        <th>Available</th>
-    </tr>
-    <?php
-    foreach ($hikes as $hiking) {
-        ?>
+<main><h1>Liste des randonnées</h1>
+    <a class="btn-" href="create.php">Create a hiking</a>
+    <table>
         <tr>
-            <td><?php echo $hiking['name'] ?></td>
-            <td><?php echo $hiking['difficulty'] ?></td>
-            <td><?php echo $hiking['distance'] . ' m' ?></td>
-            <td><?php echo $hiking['duration'] ?></td>
-            <td><?php echo $hiking['height_difference'] . ' m' ?></td>
-            <td><?php echo ($hiking['available']) ? 'True' : 'False' ?></td>
-            <td>
-                <form action="delete.php" method="post">
-                    <input type="hidden" name="hiking_id" value="<?php echo $hiking['id'] ?>">
-                    <input type="submit" name="delete" value="Delete">
-                </form>
-            <td>
-                <form action="update.php" method="post">
-                    <input type="hidden" name="hiking_id" value="<?php echo $hiking['id'] ?>">
-                    <button type="submit" name="update">Update</button>
-                </form>
-            </td>
+            <th>Name</th>
+            <th>Difficulty</th>
+            <th>Distance</th>
+            <th>Duration</th>
+            <th>Height difference</th>
+            <th>Available</th>
         </tr>
         <?php
+        foreach ($hikes as $hiking) {
+            ?>
+            <tr>
+                <td><?php echo $hiking['name'] ?></td>
+                <td><?php echo $hiking['difficulty'] ?></td>
+                <td><?php echo $hiking['distance'] . ' m' ?></td>
+                <td><?php echo $hiking['duration'] ?></td>
+                <td><?php echo $hiking['height_difference'] . ' m' ?></td>
+                <td><?php echo ($hiking['available']) ? 'True' : 'False' ?></td>
+                <td>
+                    <form action="delete.php" method="post">
+                        <input type="hidden" name="hiking_id" value="<?php echo $hiking['id'] ?>">
+                        <input type="submit" name="delete" value="Delete">
+                    </form>
+                <td>
+                    <form action="update.php" method="post">
+                        <input type="hidden" name="hiking_id" value="<?php echo $hiking['id'] ?>">
+                        <button type="submit" name="update">Update</button>
+                    </form>
+                </td>
+            </tr>
+            <?php
 
-    }
-    ?>
-</table>
+        }
+        ?>
+    </table>
+</main>
 </body>
 
 </html>

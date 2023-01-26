@@ -21,10 +21,9 @@ class UserService
 
         // Find the user by username
         $user = $this->dao->findByName($username);
-
         // Check if user exists and verify the password
 
-        if (password_verify($password, $user->getPassword())) {
+        if ($user && password_verify($password, $user->getPassword())) {
             // Start a new session
             session_start();
             $_SESSION['user_id'] = $user->getId();

@@ -7,7 +7,7 @@
   "version": "1.0.0",
   "main": "tailwind.config.js",
   "scripts": {
-    "tailwind-watch": "npx tailwindcss -i ./public/css/input.css -o ./public/css/output.css --watch"
+    "tailwind-watch": "npx tailwindcss -i php-training-mysql/public/css/input.css -o php-training-mysql/public/css/output.css --watch"
   },
   "author": "",
   "license": "ISC",

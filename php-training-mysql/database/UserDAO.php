@@ -16,16 +16,14 @@ class UserDAO
         $this->db = Database::getInstance()->getConnection();
     }
 
-    public function findByName($username): User
+    public function findByName($username): ?User
     {
         $query = 'SELECT * FROM user WHERE username = :username';
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':username', $username);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_CLASS, User::class);
-
-        $user = $stmt->fetch();
-        return $user;
+        return $stmt->fetch() ?: null;
     }
 
     /*public static function register(): void
