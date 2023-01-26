@@ -1,30 +1,34 @@
 <?php
 include_once('../../database/HikingService.php');
-$hiking_displayed = null;
-$hikingService = new HikingService();
 
-if (isset($_POST['update'])) {
-    $id = $_POST['hiking_id'];
-    $hiking_displayed = $hikingService->getHikingById($id);
-}
+session_start();
+if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
 
-if (isset($_POST['submit'])) {
-    $id = $_POST['hiking_id'];
-    $hiking = $hikingService->getHikingById($id);
-    $hiking->setName($_POST['name']);
-    $hiking->setDifficulty($_POST['difficulty']);
-    $hiking->setDistance($_POST['distance']);
-    $hiking->setDuration($_POST['duration']);
-    $hiking->setHeightDifference($_POST['height_difference']);
-    if ($_POST['available'] == "true") {
-        $availability_bool = true;
-    } else {
-        $availability_bool = false;
+    $hiking_displayed = null;
+    $hikingService = new HikingService();
+
+    if (isset($_POST['update'])) {
+        $id = $_POST['hiking_id'];
+        $hiking_displayed = $hikingService->getHikingById($id);
     }
-    $hiking->setAvailability($availability_bool);
-    $hikingService->updateHiking($hiking);
-    header('Location: read.php');
 
+    if (isset($_POST['submit'])) {
+        $id = $_POST['hiking_id'];
+        $hiking = $hikingService->getHikingById($id);
+        $hiking->setName($_POST['name']);
+        $hiking->setDifficulty($_POST['difficulty']);
+        $hiking->setDistance($_POST['distance']);
+        $hiking->setDuration($_POST['duration']);
+        $hiking->setHeightDifference($_POST['height_difference']);
+        if ($_POST['available'] == "true") {
+            $availability_bool = true;
+        } else {
+            $availability_bool = false;
+        }
+        $hiking->setAvailability($availability_bool);
+        $hikingService->updateHiking($hiking);
+        header('Location: read.php');
+    }
 }
 ?>
 

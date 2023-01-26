@@ -8,12 +8,15 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
     $is_user = $user_service->login($username, $password);
+    session_start();
+
     if ($is_user) {
-        session_start();
         $_SESSION['username'] = $username;
         $_SESSION['password'] = $password;
         header('location: ../hiking/read.php');
     } else {
-        echo 'Sorry, you are not registered';
+        $_SESSION['error_message'] = 'Sorry, you are not registered';
+        header('location: ../index.php');
+
     }
 }

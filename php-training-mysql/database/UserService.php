@@ -1,7 +1,7 @@
 <?php
 
 namespace App\database;
-require_once __DIR__.'/UserDAO.php';
+require_once __DIR__ . '/UserDAO.php';
 
 class UserService
 {
@@ -21,10 +21,10 @@ class UserService
 
         // Find the user by username
         $user = $this->dao->findByName($username);
-        // Check if user exists and verify the password
-        $hash = password_hash($user->getPassword(), PASSWORD_BCRYPT);
 
-        if (password_verify($password, $hash)) {
+        // Check if user exists and verify the password
+
+        if (password_verify($password, $user->getPassword())) {
             // Start a new session
             session_start();
             $_SESSION['user_id'] = $user->getId();
@@ -32,11 +32,5 @@ class UserService
         } else {
             return false;
         }
-    }
-
-    public function logout()
-    {
-        session_start();
-        session_destroy();
     }
 }

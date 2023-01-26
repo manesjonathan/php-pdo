@@ -1,8 +1,8 @@
 <?php
 
 namespace App\database;
-require_once __DIR__.'/Database.php';
-require_once __DIR__.'/model/User.php';
+require_once __DIR__ . '/Database.php';
+require_once __DIR__ . '/model/User.php';
 
 use App\database\model\User;
 use PDO;
@@ -27,5 +27,21 @@ class UserDAO
         $user = $stmt->fetch();
         return $user;
     }
+
+    /*public static function register(): void
+    {
+        $db = Database::getInstance()->getConnection();
+
+        $query = 'INSERT INTO user (username, email, password) VALUES (:username, :email, :password)';
+
+        $stmt = $db->prepare($query);
+        $username = "admin";
+        $email = "admin@admin.be";
+        $password = password_hash('password', PASSWORD_BCRYPT);
+        $stmt->bindParam(':username', $username);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':password', $password);
+        $stmt->execute();
+    }*/
 
 }
