@@ -42,7 +42,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
 </head>
 
 <body>
-<a href="read.php">Liste des données</a>
+<a href="read.php">Liste des randonnées</a>
 <h1>Ajouter</h1>
 <form action="" method="post">
     <div>

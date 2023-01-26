@@ -5,7 +5,7 @@ namespace App\database;
 interface DbInterface
 {
     const HOST ="localhost";
-    const DBNAME = "becode";
+    const DBNAME = "reunion_island";
     const USER ="root";
     const PASSWORD = "";
     function getConnection();

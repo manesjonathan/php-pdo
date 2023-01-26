@@ -12,15 +12,15 @@ session_start();
     <link rel="stylesheet" href="css/output.css" media="screen" title="no title">
 </head>
 <body class="flex flex-col bg-slate-900 items-center text-gray-50 h-screen">
-<header class="">
-    <h1>Hiking</h1>
-</header>
 <main class="flex flex-col mb-auto mt-20 m-auto text-gray-50 w-full items-center justify-center">
-    <section class="bg-gray-900 flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0 rounded-lg shadow border md:mt-0 sm:max-w-md xl:p-0 bg-gray-800 border-gray-700">
+    <section
+            class="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0 rounded-lg shadow border bg-gray-800 border-gray-700">
+        <h1 class="text-xl m-5">Hiking</h1>
+
         <article class="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <h1 class="text-xl font-bold leading-tight tracking-tight md:text-2xl text-white">
+            <h2 class="text-xl font-bold leading-tight tracking-tight md:text-2xl text-white">
                 Sign in to your account
-            </h1>
+            </h2>
             <form class="space-y-4 md:space-y-6" action="user/check_login.php" method="post">
                 <section>
                     <label for="username" class="block mb-2 text-sm font-medium text-white">Username</label>
@@ -48,7 +48,6 @@ session_start();
         </article>
     </section>
 </main>
-
 
 </body>
 </html>
