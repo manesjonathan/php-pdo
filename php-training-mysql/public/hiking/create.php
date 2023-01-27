@@ -77,7 +77,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
 <form action="" method="post">
     <div>
         <label for="name">Name
-            <input required type="text" name="name" value="">
+            <input type="text" name="name" value="">
         </label>
     </div>
 
@@ -94,23 +94,23 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
     </div>
     <div>
         <label for="available"> Available
-            <input type="radio" name="available" value="true" checked>True
+            <input type="radio" name="available" value="true">True
             <input type="radio" name="available" value="false">False
         </label>
     </div>
     <div>
         <label for="distance">Distance
-            <input required type="text" name="distance" value="">
+            <input type="text" name="distance" value="">
         </label>
     </div>
     <div>
         <label for="duration">Durée
-            <input required type="time" name="duration" value="">
+            <input type="time" name="duration" value="">
         </label>
     </div>
     <div>
         <label for="height_difference">Dénivelé
-            <input required type="text" name="height_difference" value="">
+            <input type="text" name="height_difference" value="">
         </label>
     </div>
     <button type="submit" name="button">Envoyer</button>
