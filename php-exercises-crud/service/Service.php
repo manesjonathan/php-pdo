@@ -31,6 +31,16 @@ class Service
         return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: null;
     }
 
+
+    public function getClientById($id)
+    {
+        $query = "SELECT * FROM clients WHERE id = :id";
+        $stmt = $this->connection->prepare($query);
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: null;
+    }
+
     public function readShowTypes()
     {
         $query = "SELECT * FROM showtypes";
@@ -38,6 +48,17 @@ class Service
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+
+    public function getShowByName($title)
+    {
+        $query = "SELECT * FROM shows WHERE title = :title";
+        $stmt = $this->connection->prepare($query);
+        $stmt->bindValue(':title', $title);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: null;
+    }
+
 
     public function read20Clients()
     {
@@ -136,7 +157,8 @@ class Service
 
     public function updateClient($client)
     {
-        $query = "UPDATE clients SET lastName=:lastName, firstName=:firstName, birthDate=:birthDate, card=:card, cardNumber=:cardNumber WHERE id=:id";
+        $query = "UPDATE clients 
+                    SET lastName=:lastName, firstName=:firstName, birthDate=:birthDate, card=:card, cardNumber=:cardNumber WHERE id=:id";
         $stmt = $this->connection->prepare($query);
         $stmt->bindValue(':id', $client['id']);
         $stmt->bindValue(':lastName', $client['lastName']);
@@ -144,6 +166,26 @@ class Service
         $stmt->bindValue(':birthDate', $client['birthDate']);
         $stmt->bindValue(':card', $client['card']);
         $stmt->bindValue(':cardNumber', $client['cardNumber']);
+
+        $stmt->execute();
+    }
+
+    public function updateShow($show)
+    {
+        $query = "UPDATE shows 
+                    SET title=:title,performer=:performer, date=:date, duration=:duration, firstGenresId=:firstGenresId,
+                        secondGenreId=:secondGenreId, showTypesId=:showTypesId, startTime=:startTime
+                    WHERE id=:id";
+        $stmt = $this->connection->prepare($query);
+        $stmt->bindValue(':id', $show['id']);
+        $stmt->bindValue(':title', $show['title']);
+        $stmt->bindValue(':performer', $show['performer']);
+        $stmt->bindValue(':date', $show['date']);
+        $stmt->bindValue(':duration', $show['duration']);
+        $stmt->bindValue(':firstGenresId', $show['firstGenresId']);
+        $stmt->bindValue(':secondGenreId', $show['secondGenreId']);
+        $stmt->bindValue(':showTypesId', $show['showTypesId']);
+        $stmt->bindValue(':startTime', $show['startTime']);
 
         $stmt->execute();
     }

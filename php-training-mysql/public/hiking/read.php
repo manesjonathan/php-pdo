@@ -29,48 +29,50 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
 
 <body class="flex flex-col items-center text-gray-50 h-screen bg-background bg-no-repeat bg-cover bg-center bg-fixed">
 
-<header class="flex flex-row p-5 items-end">
-    <a class="m-5" href="create.php">Create a hiking</a>
+<header class="flex flex-row p-5 items-end place-self-end">
+    <a class="text-white ring-2 outline-none font-medium m-5 rounded-lg px-5 py-2.5 text-center bg-gray-700 bg-opacity-70"
+       href="create.php">CREATE HIKING</a>
 
-    <form class="m-5" action="../user/logout.php" method="post">
-        <input type="submit" value="Logout">
+    <form class="text-white ring-2 outline-none font-medium m-5 rounded-lg px-5 py-2.5 text-center bg-gray-700 bg-opacity-70"
+          action="../user/logout.php" method="post">
+        <input type="submit" value="LOGOUT">
     </form>
 
 </header>
 <main class="flex flex-col">
-    <h1 class="my-4">Liste des randonnées</h1>
-    <table class="rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-70 border border-gray-100">
+    <h1 class="my-4 text-2xl">HIKING LIST</h1>
+    <table class="rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-gray-700 bg-opacity-70 border border-gray-100">
         <thead class="text-xs uppercase text-gray-50">
         <tr>
             <th scope="col"
-                class="py-3 px-6 text-xs font-medium uppercase text-gray-50">
+                class="py-3 px-6 text-sm font-medium uppercase text-gray-50">
                 Name
             </th>
             <th scope="col"
-                class="py-3 px-6 text-xs font-medium uppercase text-gray-50">
+                class="py-3 px-6 text-sm font-medium uppercase text-gray-50">
                 Difficulty
             </th>
             <th scope="col"
-                class="py-3 px-6 text-xs font-medium uppercase text-gray-50">
+                class="py-3 px-6 text-sm font-medium uppercase text-gray-50">
                 Distance
             </th>
             <th scope="col"
-                class="py-3 px-6 text-xs font-medium uppercase text-gray-50">
+                class="py-3 px-6 text-sm font-medium uppercase text-gray-50">
                 Duration
             </th>
             <th scope="col"
-                class="py-3 px-6 text-xs font-medium uppercase text-gray-50">
+                class="py-3 px-6 text-sm font-medium uppercase text-gray-50">
                 Height difference
             </th>
             <th scope="col"
-                class="py-3 px-6 text-xs font-medium uppercase text-gray-50">
+                class="py-3 px-6 text-sm font-medium uppercase text-gray-50">
                 Available
             </th>
             <th scope="col"
-                class="py-3 px-6 text-xs font-medium uppercase text-gray-50"> OPTIONS
+                class="py-3 px-6 text-sm font-medium uppercase text-gray-50"> OPTIONS
             </th>
             <th scope="col"
-                class="py-3 px-6 text-xs font-medium uppercase text-gray-50">
+                class="py-3 px-6 text-sm font-medium uppercase text-gray-50">
             </th>
         </tr>
         </thead>

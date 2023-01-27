@@ -100,7 +100,7 @@ $shows = $service->readShows();
                 <?php
                 foreach ($clients_starts_m as $client) {
                     ?>
-                    <option value=""><?php echo 'Nom  :' . $client['lastName'] . ', ' .
+                    <option value=""><?php echo 'Nom  : ' . $client['lastName'] . ', ' .
                             'Prénom : ' . $client['firstName'] ?></option>
                 <?php } ?>
             </select>
