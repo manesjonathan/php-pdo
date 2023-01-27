@@ -10,7 +10,6 @@ $card_type_list = $service->getCardTypes();
 $show_types = $service->getShowTypes();
 $gender_list = $service->getGender();
 $client_to_update = $service->getClientByName('Perry')[0];
-print_r($client_to_update);
 
 if (isset($_POST['submit'])) {
     $last_name = $_POST['last_name'];
@@ -59,7 +58,26 @@ if (isset($_POST['submit_show'])) {
     $service->createShow($show);
     header('Location: index.php');
 }
+if (isset($_POST['update'])) {
+    $last_name = $_POST['last_name_up'];
+    $first_name = $_POST['first_name_up'];
+    $birth_date = $_POST['birth_date_up'];
+    $has_card = ($_POST['has_card_up'] == "true") ? 1 : 0;
+    $card_number = $has_card == 1 ? $_POST['card_number_up'] : null;
 
+    //create user
+    $client = [
+        'id' => $client_to_update['id'],
+        'lastName' => $last_name,
+        'firstName' => $first_name,
+        'birthDate' => $birth_date,
+        'card' => $has_card,
+        'cardNumber' => $card_number,
+    ];
+    $service->updateClient($client);
+    header('Location: part_two.php');
+
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -160,8 +178,6 @@ if (isset($_POST['submit_show'])) {
             <button type="submit" name="submit_show">Envoyer</button>
         </form>
     </section>
-
-
 
 
     <section>

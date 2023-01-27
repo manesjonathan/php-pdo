@@ -133,6 +133,20 @@ class Service
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function updateClient($client)
+    {
+        $query = "UPDATE clients SET lastName=:lastName, firstName=:firstName, birthDate=:birthDate, card=:card, cardNumber=:cardNumber WHERE id=:id";
+        $stmt = $this->connection->prepare($query);
+        $stmt->bindValue(':id', $client['id']);
+        $stmt->bindValue(':lastName', $client['lastName']);
+        $stmt->bindValue(':firstName', $client['firstName']);
+        $stmt->bindValue(':birthDate', $client['birthDate']);
+        $stmt->bindValue(':card', $client['card']);
+        $stmt->bindValue(':cardNumber', $client['cardNumber']);
+
+        $stmt->execute();
+    }
 }
 
 class Database
