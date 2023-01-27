@@ -26,7 +26,7 @@ class UserDAO
         return $stmt->fetch() ?: null;
     }
 
-    public static function register(): void
+    /*public static function register(): void
     {
         $db = Database::getInstance()->getConnection();
 
@@ -40,6 +40,6 @@ class UserDAO
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':password', $password);
         $stmt->execute();
-    }
+    }*/
 
 }
