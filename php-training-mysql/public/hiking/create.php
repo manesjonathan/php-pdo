@@ -68,7 +68,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
 <head>
     <meta charset="utf-8">
     <title>Ajouter une randonnée</title>
-    <link rel="stylesheet" href="../css/basics.css" media="screen" title="no title">
+    <link rel="stylesheet" href="../assets/css/basics.css" media="screen" title="no title">
 </head>
 
 <body>
