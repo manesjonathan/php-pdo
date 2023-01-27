@@ -1,0 +1,17 @@
+{
+    "name": "seife/php-pdo",
+    "autoload": {
+        "psr-4": {
+            "Seife\\PhpPdo\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jonathan Manes",
+            "email": "manesjona@gmail.com"
+        }
+    ],
+    "require": {
+        "filp/whoops": "^2.14"
+    }
+}

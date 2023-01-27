@@ -29,13 +29,13 @@ class Database implements DbInterface
         }
     }
 
-    public function get_connection()
+    public function getConnection()
     {
         return $this->connection;
     }
 
 
-    public static function get_instance()
+    public static function getInstance()
     {
         if (!self::$instance) {
             self::$instance = new Database();

@@ -8,5 +8,5 @@ interface DbInterface
     const USER = "root";
     const PASSWORD = "";
 
-    function get_connection();
+    function getConnection();
 }
