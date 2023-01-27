@@ -39,7 +39,7 @@ $shows = $service->readShows();
         article {
             border: #191d24 solid 1px;
             padding: 2%;
-            margin: 2%;
+            margin: 1%;
         }
 
         .title {
@@ -48,7 +48,7 @@ $shows = $service->readShows();
     </style>
 </head>
 <body>
-<header><a href="next.php">Next page</a></header>
+<header><a href="part_two.php">Next page</a></header>
 <main>
     <section>
         <label for="clients">Exercise 1: Clients

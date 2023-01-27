@@ -22,6 +22,15 @@ class Service
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function getClientByName($lastName)
+    {
+        $query = "SELECT * FROM clients WHERE lastName = :lastName";
+        $stmt = $this->connection->prepare($query);
+        $stmt->bindValue(':lastName', $lastName);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: null;
+    }
+
     public function readShowTypes()
     {
         $query = "SELECT * FROM showtypes";

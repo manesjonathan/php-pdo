@@ -9,6 +9,8 @@ $service = new Service();
 $card_type_list = $service->getCardTypes();
 $show_types = $service->getShowTypes();
 $gender_list = $service->getGender();
+$client_to_update = $service->getClientByName('Perry')[0];
+print_r($client_to_update);
 
 if (isset($_POST['submit'])) {
     $last_name = $_POST['last_name'];
@@ -56,7 +58,6 @@ if (isset($_POST['submit_show'])) {
 
     $service->createShow($show);
     header('Location: index.php');
-
 }
 
 ?>
@@ -78,7 +79,7 @@ if (isset($_POST['submit_show'])) {
 <body>
 <main>
     <section>
-        <p>Exercice 1:</p>
+        <p>Exercice 1 et 2:</p>
         <form action="" method="post">
             <label>Nom:
                 <input type="text" required name="last_name">
@@ -112,7 +113,7 @@ if (isset($_POST['submit_show'])) {
     </section>
 
     <section>
-        <p>Exercice 2:</p>
+        <p>Exercice 3:</p>
         <form action="" method="post">
             <label for="title">Titre:
                 <input type="text" name="title" required>
@@ -159,6 +160,38 @@ if (isset($_POST['submit_show'])) {
             <button type="submit" name="submit_show">Envoyer</button>
         </form>
     </section>
+
+
+
+
+    <section>
+        <p>Exercice 4:</p>
+        <?php echo $client_to_update['lastName']; ?>
+        <form action="" method="post">
+            <label for="last_name_up">Nom:
+                <input type="text" required name="last_name_up" value="<?php echo $client_to_update['lastName']; ?>">
+            </label>
+            <label for="first_name_up">Prénom:
+                <input type="text" required name="first_name_up" value="<?php echo $client_to_update['firstName']; ?>">
+            </label>
+            <label for="birth_date_up">Date de naissance:
+                <input type="date" required name="birth_date_up" value="<?php echo $client_to_update['birthDate']; ?>">
+            </label>
+
+            <label for="has_card_up">Carte de fidelité
+                <input type="radio" name="has_card_up"
+                       value="true" <?php echo $client_to_update['card'] ? 'checked' : ''; ?>>True
+                <input type="radio" name="has_card_up"
+                       value="false" <?php echo !$client_to_update['card'] ? 'checked' : ''; ?>>False
+            </label>
+            <label for="card_number_up">Numéro de carte:
+                <input type="number" name="card_number_up" value="<?php echo $client_to_update['cardNumber']; ?>">
+            </label>
+            <button type="submit" name="update">Envoyer</button>
+        </form>
+    </section>
+
+
 </main>
 </body>
 </html>
