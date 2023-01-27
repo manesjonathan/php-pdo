@@ -67,7 +67,8 @@ class Service
 
     public function createClient($client)
     {
-        $query = 'INSERT INTO clients (lastName, firstName, birthDate, card, cardNumber) VALUES (:lastName, :firstName, :birthDate, :card, :cardNumber)';
+        $query = 'INSERT INTO clients (lastName, firstName, birthDate, card, cardNumber) 
+                    VALUES (:lastName, :firstName, :birthDate, :card, :cardNumber)';
         $stmt = $this->connection->prepare($query);
         $stmt->bindValue(':lastName', $client['last_name']);
         $stmt->bindValue(':firstName', $client['first_name']);
@@ -84,8 +85,41 @@ class Service
         $stmt->execute();
     }
 
-    public function getCardTypes(){
+    public function createShow($show)
+    {
+        $query = 'INSERT INTO shows (title, performer, date, showTypesId, firstGenresId, secondGenreId, duration, startTime) 
+                    VALUES (:title, :performer, :date, :showTypesId, :firstGenresId, :secondGenreId, :duration, :startTime)';
+        $stmt = $this->connection->prepare($query);
+        $stmt->bindValue(':title', $show['title']);
+        $stmt->bindValue(':performer', $show['performer']);
+        $stmt->bindValue(':date', $show['date']);
+        $stmt->bindValue(':showTypesId', $show['showTypesId']);
+        $stmt->bindValue(':firstGenresId', $show['firstGenresId']);
+        $stmt->bindValue(':secondGenreId', $show['secondGenreId']);
+        $stmt->bindValue(':duration', $show['duration']);
+        $stmt->bindValue(':startTime', $show['startTime']);
+        $stmt->execute();
+    }
+
+    public function getCardTypes()
+    {
         $query = "SELECT * FROM cardtypes";
+        $stmt = $this->connection->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getShowTypes()
+    {
+        $query = "SELECT * FROM showtypes";
+        $stmt = $this->connection->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getGender()
+    {
+        $query = "SELECT * FROM genres";
         $stmt = $this->connection->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

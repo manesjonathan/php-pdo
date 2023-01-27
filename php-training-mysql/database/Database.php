@@ -1,10 +1,10 @@
 <?php
 
 namespace App\database;
+use PDO;
+
 require_once __DIR__.'/DbInterface.php';
 
-use PDO;
-use PDOException;
 class Database implements DbInterface
 {
     private static $instance = null;
